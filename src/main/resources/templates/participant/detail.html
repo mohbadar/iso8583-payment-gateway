@@ -119,7 +119,7 @@
                             <img alt ="QR Image" th:src="|@{/images/qrcode/}${qrimg}|" />
                         </div>
                         
-                        <button class="btn btn-default"><i class="fa fa-print"></i> پرنت</button>
+                        <a th:href="|@{/participant/card/}${participant.id}|" class="btn btn-default"><i class="fa fa-print"></i> پرنت</a>
                     </div>
                 </div>
 

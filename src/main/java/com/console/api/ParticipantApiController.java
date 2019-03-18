@@ -10,8 +10,10 @@ import com.console.service.ParticipantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -19,14 +21,15 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Dell
  */
 @RestController
-@RequestMapping(value = "/api")
+@RequestMapping(value = "/api/participant")
 public class ParticipantApiController {
 
     @Autowired
     private ParticipantService participantService;
 
-    @GetMapping("/participant-by-id")
-    public Participant getParanticipantById(@RequestParam("id") Long id) {
+    @GetMapping("/get")
+    @ResponseBody
+    public Participant getParanticipantById(@PathVariable("id") Long id) {
         if (id == 0 || id == null) {
             return null;
         }

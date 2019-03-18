@@ -168,4 +168,12 @@ public class ParticipantController {
 
         return qrimg;
     }
+
+    @GetMapping("/participant/card/{id}")
+    public ModelAndView card(@PathVariable("id") Long id) {
+        ModelAndView mv = new ModelAndView("participant/card");
+        mv.addObject("participant", participantService.getOne(id));
+        mv.addObject("qrimg", generateQrCode(participantService.getOne(id)));
+        return mv;
+    }
 }
