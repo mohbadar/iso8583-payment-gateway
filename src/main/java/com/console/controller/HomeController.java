@@ -32,7 +32,7 @@ public class HomeController {
     @Loggable
     @GetMapping("/access-denied")
     public String accessDenied() {
-        return "/error/access-denied";
+        return "/error/403";
     }
 
 }

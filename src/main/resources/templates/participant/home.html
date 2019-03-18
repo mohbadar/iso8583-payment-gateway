@@ -36,19 +36,21 @@
                                 <tr>
                                     <th>نام مکمل</th>
                                     <th>ایمیل </th>
-                                    <th>وضیعت</th>
+                                    <th>شماره تماس</th>
+                                    <th>ولایت</th>
                                     <th>اعمال</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr th:each="row: ${users}">
+                                <tr th:each="row: ${participants}">
                                     <td th:text="${row.firstName +' '+ row.lastName}">0</td>
                                     <td th:text="${row.email}">Email</td>
-                                    <td th:text="${row.enabled}">Enabled</td>
+                                    <td th:text="${row.phone}">Phone</td>
+                                    <td th:text="${row.province}"></td>
                                     <td>
-                                        <a th:href="|@{/user/delete/}${row.id}|" class="fa fa-trash-o fa-x"></a> - 
-                                        <a th:href="|@{/user/update/}${row.id}|" class="fa fa-pencil fa-x"></a>
-
+                                        <a th:href="|@{/participant/delete/}${row.id}|" class="fa fa-trash-o fa-x"></a> - 
+                                        <a th:href="|@{/participant/update/}${row.id}|" class="fa fa-pencil fa-x"></a>
+                                        <a th:href="|@{/participant/detail/}${row.id}|" class="fa fa-book fa-x"></a>
                                     </td>
                                 </tr>
 
@@ -58,7 +60,8 @@
                                 <tr>
                                     <th>نام مکمل</th>
                                     <th>ایمیل </th>
-                                    <th>وضیعت</th>
+                                    <th>شماره تماس</th>
+                                    <th>ولایت</th>
                                     <th>اعمال</th>
                                 </tr>
 

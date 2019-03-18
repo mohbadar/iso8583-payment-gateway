@@ -23,61 +23,121 @@
                 </ol>
             </section>
 
-            <div class="col-md-10 col-md-offset-1">
+            <div class="row" style="margin: 1%; ">
 
-                <div class="box">
-                    <div class="box-header">
-                        <h3 class="box-title">مشخصات  <span th:text="${participant.firstName + ' '+ participant.lastName}"/></h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <table class="datatable table table-bordered table-striped">
-                            <thead>
+                <div class="col-md-5">
+                    <div class="box" style="padding: 3%">
+                        <div class="box-header">
+                            <h3 class="box-title">مشخصات  <span th:text="${participant.firstName + ' '+ participant.lastName}"/></h3>
+                            <hr/>
+                            <table class="table table-bordered">
+
                                 <tr>
-                                    <th>نام مکمل</th>
-                                    <th>ایمیل </th>
-                                    <th>وضیعت</th>
-                                    <th>اعمال</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr th:each="row: ${users}">
-                                    <td th:text="${row.firstName +' '+ row.lastName}">0</td>
-                                    <td th:text="${row.email}">Email</td>
-                                    <td th:text="${row.enabled}">Enabled</td>
-                                    <td>
-                                        <a th:href="|@{/user/delete/}${row.id}|" class="fa fa-trash-o fa-x"></a> - 
-                                        <a th:href="|@{/user/update/}${row.id}|" class="fa fa-pencil fa-x"></a>
-
-                                    </td>
+                                    <td>نام</td>
+                                    <td th:text="${participant.firstName + ' '+ participant.lastName}"></td>
                                 </tr>
 
-
-                            </tbody>
-                            <tfoot>
                                 <tr>
-                                    <th>نام مکمل</th>
-                                    <th>ایمیل </th>
-                                    <th>وضیعت</th>
-                                    <th>اعمال</th>
+                                    <td>شماره تماس</td>
+                                    <td th:text="${participant.phone}"></td>
                                 </tr>
 
-                            </tfoot>
-                        </table>
+                                <tr>
+                                    <td>ایمیل آدرس</td>
+                                    <td th:text="${participant.email}"></td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>ولایت</td>
+                                    <td th:text="${participant.province}"></td>
+                                </tr>
+
+                                <tr>
+                                    <td>ولسوالی</td>
+                                    <td th:text="${participant.province}"></td>
+                                </tr>
+
+                                <tr>
+                                    <td>آدرس</td>
+                                    <td th:text="${participant.district}"></td>
+                                </tr>
+
+                                <tr>
+                                    <td>نمبر صکوک تذکره</td>
+                                    <td th:text="${participant.tazkraSerialNumber}"></td>
+                                </tr>
+
+                                <tr>
+                                    <td>نمبر صحفه تذکره</td>
+                                    <td th:text="${participant.tazkraPageNumber}"></td>
+                                </tr>
+
+                                <tr>
+                                    <td> جلد تذکره</td>
+                                    <td th:text="${participant.tazkraJuld}"></td>
+                                </tr>
+
+                                <tr>
+                                    <td>  سال تولد</td>
+                                    <td th:text="${participant.birthYear}"></td>
+                                </tr>
+
+                                <tr>
+                                    <td>  محل تولد</td>
+                                    <td th:text="${participant.birthPlace}"></td>
+                                </tr>
+
+                                <tr>
+                                    <td> جنسیت</td>
+                                    <td th:text="${participant.gender}"></td>
+                                </tr>
+
+                                <tr>
+                                    <td> حالت مدنی</td>
+                                    <td th:text="${participant.status}"></td>
+                                </tr>
+
+                                <tr>
+                                    <td>تحصیل</td>
+                                    <td th:text="${participant.eductaion}"></td>
+                                </tr>
+
+                            </table>
+                        </div>
+
                     </div>
-                    <!-- /.box-body -->
                 </div>
-                <!-- /.box -->
+
+                <div class="col-md-5">
+                    <div class="box" style="padding: 3%">
+                        <div class="box-header">
+                            <h3 class="box-title">کیو آر کد </h3>
+                        </div>
+
+                        <div >
+                            <img alt ="QR Image" th:src="|@{/images/qrcode/}${qrimg}|" />
+                        </div>
+                        
+                        <button class="btn btn-default"><i class="fa fa-print"></i> پرنت</button>
+                    </div>
+                </div>
+
             </div>
             <!-- /.col -->
-
 
 
         </div>
 
 
-        <!-- END CONTENT -->
 
 
-    </body>
+
+    </div>
+
+
+    <!-- END CONTENT -->
+
+
+</body>
 </html>

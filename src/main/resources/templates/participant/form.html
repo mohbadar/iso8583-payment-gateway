@@ -24,7 +24,8 @@
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form class="form-horizontal" th:action="@{/participant/register}" method="post" enctype="multipart/form-data">
+                        <form class="form-horizontal" th:action="@{/participant/save}" method="post">  
+                            <!--enctype="multipart/form-data">-->
 
                             <div th:if="${message}">
                                 <div class="alert alert-danger">

@@ -86,8 +86,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/css/**",
                         "/images/**",
                         "/fonts/**",
-                        "/webjars/**").permitAll()
-                .antMatchers("/user/**").authenticated()
+                        "/upload/**",
+                        "/webjars/**",
+                        ParamsConfig.TOKEN_GENERATION_URL
+                ).permitAll()
+                .antMatchers("/secure/**").authenticated()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
