@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<body>
+<th:block th:fragment="footer">
+    <footer>
+        <div class="container">
+            <p>
+                &copy; Memorynotfound.com
+                <span sec:authorize="isAuthenticated()" style="display: inline-block;">
+                    | Logged user: <span sec:authentication="name"></span> |
+                    Roles: <span sec:authentication="principal.authorities"></span> |
+                    <a th:href="@{/logout}">Sign Out</a>
+                </span>
+            </p>
+        </div>
+    </footer>
+
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+</th:block>
+</body>
+</html>

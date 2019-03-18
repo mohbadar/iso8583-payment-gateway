@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{layouts/layout}">
+
+    <body>
+
+
+        <!-- CONTENT -->
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper" layout:fragment="content">
+
+            <!-- right column -->
+            <div class="col-md-8 col-md-offset-2" style="margin-top: 5%">
+                <!-- Horizontal Form -->
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">فرم ورود به سیستم </h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form class="form-horizontal" th:action="@{/login}" method="post">
+
+                        <div th:if="${param.error}">
+                            <div class="alert alert-danger">
+                                نام کاربری یا رمز عبور اشتباه است.
+                            </div>
+                        </div>
+                        <div th:if="${param.logout}">
+                            <div class="alert alert-info">
+                                شما از سیستم خارج شدید.
+                            </div>
+                        </div>
+
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="username" class="col-sm-2 control-label">ایمیل</label>
+
+                                <div class="col-sm-10">
+                                    <input name="username" id="username" required="true" autofocus="true" type="email" class="form-control" placeholder="ایمیل">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="col-sm-2 control-label">رمز عبور</label>
+
+                                <div class="col-sm-10">
+                                    <input  type="password" name="password" id="password" class="form-control" placeholder="رمز عبور">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> مرا به خاطر بسپار
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer">
+                            <button type="reset" class="btn btn-default">انصراف</button>
+                            <button type="submit" class="btn btn-info pull-right">ورود</button>
+                        </div>
+                        <!-- /.box-footer -->
+                    </form>
+                </div>
+
+            </div></div>
+
+        <!-- END CONTENT -->
+
+    </body>
+</html>

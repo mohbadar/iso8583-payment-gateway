@@ -1,0 +1,26 @@
+<html xmlns:layout="http://www.w3.org/1999/xhtml" 
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      >
+
+    <head th:replace="fragments/head :: head"></head>
+
+    <body class="hold-transition skin-blue sidebar-mini">
+        <div class="wrapper" >
+
+            <div th:replace="fragments/header :: header"></div>
+            <div  sec:authorize="isAuthenticated()" th:replace="fragments/sidebar :: sidebar"></div>
+
+            <div th:if="${param.msg}">
+                <div class="alert alert-info">
+                    <p th:text="${param}"></p>
+                </div>
+            </div>
+            <div class="col" layout:fragment="content"></div>
+
+            <div th:replace="fragments/footer :: footer"></div>
+            <div th:replace="fragments/setting :: setting"></div>
+            <div th:replace="fragments/scripts :: scripts"></div>
+
+        </div>
+    </body>
+</html>

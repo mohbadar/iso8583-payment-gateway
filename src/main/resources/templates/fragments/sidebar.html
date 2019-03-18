@@ -1,0 +1,124 @@
+
+<!-- SIDEBAR -->
+<!-- right side column. contains the logo and sidebar -->
+<aside class="main-sidebar" th:fragment="sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+            <div class="pull-right image">
+                <img th:src="@{/images/badar.jpg}" class="img-circle" alt="User Image">
+            </div>
+            <div class="pull-right info">
+                <p  th:text="${#authentication.getName()}" >  بادار هاشمی</p>
+                <a href="#"><i class="fa fa-circle text-success"></i> آنلاین</a>
+            </div>
+        </div>
+        <!-- search form -->
+        <form action="#" method="get" class="sidebar-form">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="جستجو">
+                <span class="input-group-btn">
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </form>
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header">منو</li>
+
+            <!-- Dashboard -->
+            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> خانه  </a></li>
+
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-pie-chart"></i>
+                    <span>دسترسی ها </span>
+                    <span class="pull-left-container">
+                        <i class="fa fa-angle-right pull-left"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li sec:authorize="hasAuthority('READ_PRIVILEGE')" ><a th:href="@{/privileges}"><i class="fa fa-circle-o"></i>صلاحیت ها</a></li>
+
+                    <li class="treeview">
+                        <a th:href="@{/user}"><i class="fa fa-circle-o"></i> حساب کاربری
+                            <span class="pull-left-container">
+                                <i class="fa fa-angle-right pull-left"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li sec:authorize="hasAuthority('READ_PRIVILEGE')"><a th:href="@{/user}"><i class="fa fa-circle-o"></i>لست حساب ها</a></li>
+                            <li sec:authorize="hasAuthority('WRITE_PRIVILEGE')"><a th:href="@{/user/register}"><i class="fa fa-circle-o"></i>حساب جدید</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="treeview">
+                        <a th:href="@{/role}"><i class="fa fa-circle-o"></i> رول ها
+                            <span class="pull-left-container">
+                                <i class="fa fa-angle-right pull-left"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li sec:authorize="hasAuthority('READ_PRIVILEGE')" ><a th:href="@{/role}"><i class="fa fa-circle-o"></i>لست رول ها</a></li>
+                            <li sec:authorize="hasAuthority('READ_PRIVILEGE')"><a th:href="@{/role/register}"><i class="fa fa-circle-o"></i>رول جدید</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i> <span>اشتراک کننده گان </span>
+                    <span class="pull-left-container">
+                        <i class="fa fa-angle-right pull-left"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+
+                    <li><a href=""><i class="fa fa-circle-o"></i>اشتراک کننده جدید</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i>لست اشتراک کننده گان</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-share"></i> <span>راپور </span>
+                    <span class="pull-left-container">
+                        <i class="fa fa-angle-right pull-left"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="#"><i class="fa fa-circle-o"></i> سطح اول</a></li>
+                    <li class="treeview">
+                        <a href="#"><i class="fa fa-circle-o"></i> سطح اول
+                            <span class="pull-left-container">
+                                <i class="fa fa-angle-right pull-left"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="#"><i class="fa fa-circle-o"></i> سطح دوم</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i> سطح دوم</a></li>
+
+                        </ul>
+                    </li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i> سطح اول</a></li>
+                </ul>
+            </li>
+
+
+            <li class="header">برچسب ها</li>
+            <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>مهم</span></a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>هشدار</span></a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>اطلاعات</span></a></li>
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>
+
+<!-- END SIDEBAR -->

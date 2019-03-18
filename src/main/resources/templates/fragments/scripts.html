@@ -1,0 +1,46 @@
+<!-- SCRIPTS -->
+
+<div th:fragment="scripts">
+    <!-- jQuery 3 -->
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script th:src="@{/js/jquery-ui.js}"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button);
+    </script>
+    <!-- Bootstrap 3.3.7 -->
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+
+    <!-- Sparkline -->
+    <script th:src="@{/js/jquery.sparkline.min.js}"></script>
+    <!-- jvectormap -->
+    <script th:src="@{/js/jquery-jvectormap-1.2.2.min.js}"></script>
+    <script th:src="@{/js/jquery-jvectormap-world-mill-en.js}"></script>
+
+    <!-- Slimscroll -->
+    <script th:src="@{/js/jquery.slimscroll.min.js}"></script>
+    <!-- FastClick -->
+    <script th:src="@{/js/fastclick.js}"></script>
+    <!-- AdminLTE App -->
+    <script th:src="@{/js/adminlte.min.js}"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script th:src="@{/js/dashboard.js}"></script>
+    <script th:src="@{/js/jquery.dataTables.min.js}"></script>
+    <script th:src="@{/js/dataTables.bootstrap.min.js}"></script>
+
+    <script>
+        $(function () {
+            $('.datatable').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': true,
+                'autoHeigth': true
+            })
+        })
+    </script>
+</div>
+<!-- END SCRIPTS -->

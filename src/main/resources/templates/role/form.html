@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{layouts/layout}">
+
+    <head>
+        <title>رول های سیستم</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    </head>
+    <body>
+
+        <!-- CONTENT -->
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper" layout:fragment="content">
+
+            <div th:if="${isRegister}">
+
+                <!-- right column -->
+                <div class="col-md-10 col-md-offset-1" style="margin-top: 5%">
+                    <!-- Horizontal Form -->
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">فرم راجستر رول جدید </h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <form class="form-horizontal" th:action="@{/role/save}" method="post">
+
+                            <div th:if="${param.error}">
+                                <div class="alert alert-danger">
+                                    نام کاربری یا رمز عبور اشتباه است.
+                                </div>
+                            </div>
+
+
+                            <div class="box-body">
+
+                                <div class="form-group">
+                                    <label for="name" class="col-sm-2 control-label">نام  </label>
+
+                                    <div class="col-sm-10">
+                                        <input  name="name" id="firstName" required="true" type="text" class="form-control" placeholder="نام  "/>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label for="privileges" class="col-sm-2 control-label">صلاحیت ها</label>
+
+                                    <div class="col-sm-10">
+                                        <select  id="privileges" name="privileges" class="form-control" size="10" multiple="multiple">
+                                            <option th:each="row : ${privileges}"
+                                                    th:value="${{row.id}}"
+                                                    th:text="${row.name}">
+                                                صلاحیت ها
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <button type="reset" class="btn btn-default">انصراف</button>
+                                <button type="submit" class="btn btn-info pull-right">ورود</button>
+                            </div>
+                            <!-- /.box-footer -->
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div th:if="${isUpdate}">
+
+                <!-- right column -->
+                <div class="col-md-10 col-md-offset-1" style="margin-top: 5%">
+                    <!-- Horizontal Form -->
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">فرم  تصحیح رول </h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <form class="form-horizontal" th:action="@{/role/update}" method="post">
+
+                            <input type="hidden" name="id" th:value="${{role.id}}"/>
+
+
+                            <div class="box-body">
+
+                                <div class="form-group">
+                                    <label for="name" class="col-sm-2 control-label">نام  </label>
+
+                                    <div class="col-sm-10">
+                                        <input  name="name" th:value="${{role.name}}" id="firstName" required="true" type="text" class="form-control" placeholder="نام  "/>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label for="privileges" class="col-sm-2 control-label">صلاحیت ها</label>
+
+                                    <div class="col-sm-10">
+                                        <select  id="privileges" name="privileges" class="form-control" size="10" multiple="multiple">
+                                            <option th:each="row : ${privileges}"
+                                                    th:value="${{row.id}}"
+                                                    th:text="${row.name}"
+                                                    th:selected="${role.hasPrivilege(row)}"
+                                                    >
+                                                صلاحیت ها
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <button type="reset" class="btn btn-default">انصراف</button>
+                                <button type="submit" class="btn btn-info pull-right">ورود</button>
+                            </div>
+                            <!-- /.box-footer -->
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+
+        <!-- END CONTENT -->
+
+
+    </body>
+</html>
