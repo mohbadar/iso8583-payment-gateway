@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -69,22 +70,22 @@ public class ParticipantController {
     
     @PostMapping("/participant/save")
     public ModelAndView save(
-            @RequestBody("photo") MultipartFile photo,
-            @RequestBody("firstName") String firstName,
-            @RequestBody("lastName") String lastName,
-            @RequestBody("status") String status,
-            @RequestBody("gender") boolean gender,
-            @RequestBody("tazkra_serial_number") String tazkraSerialNumber,
-            @RequestBody("tazkra_page_number") int tazkraPageNumber,
-            @RequestBody("tazkra_juld") String tazkraJuld,
-            @RequestBody("phone") String phone,
-            @RequestBody("email") String email,
-            @RequestBody("address") String address,
-            @RequestBody("province") String province,
-            @RequestBody("district") String district,
-            @RequestBody("birth_place") String birthPlace,
-            @RequestBody("birth_year") String birthYear,
-            @RequestBody("education") String education,
+            @RequestParam("photo") MultipartFile photo,
+            @RequestParam("firstName") String firstName,
+            @RequestParam("lastName") String lastName,
+            @RequestParam("status") String status,
+            @RequestParam("gender") boolean gender,
+            @RequestParam("tazkra_serial_number") String tazkraSerialNumber,
+            @RequestParam("tazkra_page_number") int tazkraPageNumber,
+            @RequestParam("tazkra_juld") String tazkraJuld,
+            @RequestParam("phone") String phone,
+            @RequestParam("email") String email,
+            @RequestParam("address") String address,
+            @RequestParam("province") String province,
+            @RequestParam("district") String district,
+            @RequestParam("birth_place") String birthPlace,
+            @RequestParam("birth_year") String birthYear,
+            @RequestParam("education") String education,
             RedirectAttributes redirectAttributes
     ) {
         
