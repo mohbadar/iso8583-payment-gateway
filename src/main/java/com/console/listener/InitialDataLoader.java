@@ -84,7 +84,8 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
                         participantReadPrivilege,
                         participantCreatePrivilege,
                         participantUpdatePrivilege,
-                        participantDeletePrivilege
+                        participantDeletePrivilege,
+                        printParticipantCardPrivilege
                 );
 
         createRoleIfNotFound("ROLE_ADMIN", adminPrivileges);
