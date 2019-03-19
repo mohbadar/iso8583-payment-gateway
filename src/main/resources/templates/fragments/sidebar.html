@@ -30,7 +30,7 @@
             <li class="header">منو</li>
 
             <!-- Dashboard -->
-            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> خانه  </a></li>
+            <li class="active"><a href="/"><i class="fa fa-circle-o"></i> خانه  </a></li>
 
 
             <li class="treeview">
@@ -51,8 +51,8 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li sec:authorize="hasAuthority('READ_PRIVILEGE')"><a th:href="@{/user}"><i class="fa fa-circle-o"></i>لست حساب ها</a></li>
-                            <li sec:authorize="hasAuthority('WRITE_PRIVILEGE')"><a th:href="@{/user/register}"><i class="fa fa-circle-o"></i>حساب جدید</a></li>
+                            <li sec:authorize="hasAuthority('READ_USER')"><a th:href="@{/user}"><i class="fa fa-circle-o"></i>لست حساب ها</a></li>
+                            <li sec:authorize="hasAuthority('CREATE_USER')"><a th:href="@{/user/register}"><i class="fa fa-circle-o"></i>حساب جدید</a></li>
                         </ul>
                     </li>
 
@@ -63,8 +63,8 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li sec:authorize="hasAuthority('READ_PRIVILEGE')" ><a th:href="@{/role}"><i class="fa fa-circle-o"></i>لست رول ها</a></li>
-                            <li sec:authorize="hasAuthority('READ_PRIVILEGE')"><a th:href="@{/role/register}"><i class="fa fa-circle-o"></i>رول جدید</a></li>
+                            <li sec:authorize="hasAuthority('READ_ROLE')" ><a th:href="@{/role}"><i class="fa fa-circle-o"></i>لست رول ها</a></li>
+                            <li sec:authorize="hasAuthority('CREATE_ROLE')"><a th:href="@{/role/register}"><i class="fa fa-circle-o"></i>رول جدید</a></li>
                         </ul>
                     </li>
 
@@ -82,8 +82,8 @@
                 </a>
                 <ul class="treeview-menu">
 
-                    <li><a th:href="@{/participant/register}"><i class="fa fa-circle-o"></i>اشتراک کننده جدید</a></li>
-                    <li><a th:href="@{/participant}"><i class="fa fa-circle-o"></i>لست اشتراک کننده گان</a></li>
+                    <li sec:authorize="hasAuthority('CREATE_PARTICIPANT')" ><a th:href="@{/participant/register}"><i class="fa fa-circle-o"></i>اشتراک کننده جدید</a></li>
+                    <li sec:authorize="hasAuthority('READ_PARTICIPANT')"><a th:href="@{/participant}"><i class="fa fa-circle-o"></i>لست اشتراک کننده گان</a></li>
                 </ul>
             </li>
             <li class="treeview">
@@ -111,11 +111,11 @@
                 </ul>
             </li>
 
-
+<!--
             <li class="header">برچسب ها</li>
             <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>مهم</span></a></li>
             <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>هشدار</span></a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>اطلاعات</span></a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>اطلاعات</span></a></li>-->
         </ul>
     </section>
     <!-- /.sidebar -->

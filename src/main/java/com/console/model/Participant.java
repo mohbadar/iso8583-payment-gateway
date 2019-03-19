@@ -5,6 +5,7 @@
  */
 package com.console.model;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,7 +31,7 @@ import org.hibernate.annotations.ManyToAny;
 @Getter
 @ToString
 @EqualsAndHashCode
-public class Participant {
+public class Participant implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -71,6 +72,9 @@ public class Participant {
     private String passport;
     @Column(length = 64, name = "education", nullable = false)
     private String eductaion;
-    @Column(name = "isEntered")
+    @Column(name = "is_entered")
     private boolean isEntered = false;
+    @Column(name = "is_allowed")
+    private boolean isAllowed;
+
 }

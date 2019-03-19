@@ -81,13 +81,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers(
-                        "/",
                         "/js/**",
                         "/css/**",
                         "/images/**",
                         "/fonts/**",
                         "/upload/**",
-                        "/webjars/**",
+                        "/api/**",
                         ParamsConfig.TOKEN_GENERATION_URL
                 ).permitAll()
                 .antMatchers("/secure/**").authenticated()

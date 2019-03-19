@@ -14,6 +14,7 @@ import com.console.service.UserService;
 import com.console.util.Utility;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,6 +37,7 @@ public class UserController {
 
     @Loggable
     @GetMapping("/user")
+    @PreAuthorize("hasAuthority('READ_USER')")
     public ModelAndView userIndex() {
         ModelAndView mv = new ModelAndView("user/home");
         mv.addObject("users", userService.findAll());
@@ -44,6 +46,7 @@ public class UserController {
 
     @Loggable
     @GetMapping("/user/register")
+    @PreAuthorize("hasAuthority('CREATE_USER')")
     public ModelAndView userRegister() {
         ModelAndView mv = new ModelAndView("user/form");
         mv.addObject("roles", roleService.findAll());
@@ -53,6 +56,7 @@ public class UserController {
 
     @Loggable
     @PostMapping("/user/register")
+    @PreAuthorize("hasAuthority('CREATE_USER')")
     public String register(
             @RequestParam("email") String email,
             @RequestParam("firstName") String firstName,
@@ -79,6 +83,7 @@ public class UserController {
 
     @Loggable
     @GetMapping("/user/delete/{id}")
+    @PreAuthorize("hasAuthority('DELETE_USER')")
     public String deleteUser(@PathVariable("id") Long id) {
         userService.delete(userService.getOne(id));
         return "redirect:/user";
@@ -86,6 +91,7 @@ public class UserController {
 
     @Loggable
     @GetMapping("/user/update/{id}")
+    @PreAuthorize("hasAuthority('UPDATE_USER')")
     public ModelAndView update(@PathVariable("id") Long id) {
         ModelAndView mv = new ModelAndView("user/form");
         mv.addObject("user", userService.getOne(id));
@@ -96,6 +102,7 @@ public class UserController {
 
     @Loggable
     @PostMapping("/user/update")
+    @PreAuthorize("hasAuthority('UPDATE_USER')")
     public String update(
             @RequestParam("email") String email,
             @RequestParam("firstName") String firstName,

@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,6 +49,8 @@ public class ParticipantController {
     private ParticipantService participantService;
 
     @GetMapping("/participant")
+    @PreAuthorize("hasAuthority('READ_PARTICIPANT')")
+    @Loggable
     public ModelAndView home() {
         ModelAndView mv = new ModelAndView("participant/home");
         mv.addObject("participants", participantService.findAll());
@@ -55,14 +58,17 @@ public class ParticipantController {
     }
 
     @GetMapping("/participant/register")
+    @PreAuthorize("hasAuthority('CREATE_PARTICIPANT')")
+    @Loggable
     public ModelAndView register() {
         ModelAndView mv = new ModelAndView("participant/form");
         mv.addObject("isRegister", true);
         return mv;
     }
 
-    @Loggable
     @PostMapping(value = "/participant/save")
+    @PreAuthorize("hasAuthority('CREATE_PARTICIPANT')")
+    @Loggable
     public ModelAndView saveParticipant(
             //            @RequestParam("photo") MultipartFile photo,
             @RequestParam("firstName") String firstName,
@@ -82,8 +88,6 @@ public class ParticipantController {
             @RequestParam("education") String education,
             RedirectAttributes redirectAttributes
     ) {
-
-        System.out.println("BEFORE IMAGE " + firstName + ":" + lastName);
 
 //        if (photo.isEmpty()) {
 //            System.out.println("IMAGE IS EMPTY ");
@@ -116,12 +120,14 @@ public class ParticipantController {
         redirectAttributes.addFlashAttribute("message",
                 "You successfully registered");
         ModelAndView mv = new ModelAndView("participant/detail");
-        mv.addObject("participant", new Participant());
+        mv.addObject("participant", part);
         mv.addObject("qrimg", generateQrCode(part));
         return mv;
     }
 
     @GetMapping("/participant/update/{id}")
+    @PreAuthorize("hasAuthority('UPDATE_PARTICIPANT')")
+    @Loggable
     public ModelAndView update(@PathVariable("id") Long id) {
         ModelAndView mv = new ModelAndView("participant/form");
         mv.addObject("isUpdate", true);
@@ -130,12 +136,16 @@ public class ParticipantController {
     }
 
     @GetMapping("/participant/delete/{id}")
+    @PreAuthorize("hasAuthority('DELETE_PARTICIPANT')")
+    @Loggable
     public String delete(@PathVariable("id") Long id) {
         participantService.delete(participantService.getOne(id));
         return "redirect:/participant";
     }
 
     @GetMapping("/participant/detail/{id}")
+    @PreAuthorize("hasAuthority('READ_PARTICIPANT')")
+    @Loggable
     public ModelAndView detail(@PathVariable("id") Long id) {
         ModelAndView mv = new ModelAndView("participant/detail");
         mv.addObject("participant", participantService.getOne(id));
@@ -170,6 +180,8 @@ public class ParticipantController {
     }
 
     @GetMapping("/participant/card/{id}")
+    @PreAuthorize("hasAuthority('PRINT_PARTICIPANT_CARD')")
+    @Loggable
     public ModelAndView card(@PathVariable("id") Long id) {
         ModelAndView mv = new ModelAndView("participant/card");
         mv.addObject("participant", participantService.getOne(id));

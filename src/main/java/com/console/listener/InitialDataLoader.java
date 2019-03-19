@@ -54,24 +54,53 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
             return;
         }
 
-        Privilege readPrivilege = createPrivilegeIfNotFound("READ_PRIVILEGE");
-        Privilege writePrivilege = createPrivilegeIfNotFound("WRITE_PRIVILEGE");
-        Privilege deletePrivilege = createPrivilegeIfNotFound("DELETE_PRIVILEGE");
-        Privilege updatePrivilege = createPrivilegeIfNotFound("UPDATE_PRIVILEGE");
+        Privilege privilegeReadPrivilege = createPrivilegeIfNotFound("READ_PRIVILEGE");
+        Privilege userReadPrivilege = createPrivilegeIfNotFound("READ_USER");
+        Privilege userCreatePrivilege = createPrivilegeIfNotFound("CREATE_USER");
+        Privilege userDeletePrivilege = createPrivilegeIfNotFound("DELETE_USER");
+        Privilege userUpdatePrivilege = createPrivilegeIfNotFound("UPDATE_USER");
+        Privilege roleReadPrivilege = createPrivilegeIfNotFound("READ_ROlE");
+        Privilege roleCreatePrivilege = createPrivilegeIfNotFound("CREATE_ROLE");
+        Privilege roleDeletePrivilege = createPrivilegeIfNotFound("DELETE_ROLE");
+        Privilege roleUpdatePrivilege = createPrivilegeIfNotFound("UPDATE_ROLE");
+        Privilege participantReadPrivilege = createPrivilegeIfNotFound("READ_PARTICIPANT");
+        Privilege participantCreatePrivilege = createPrivilegeIfNotFound("CREATE_PARTICIPANT");
+        Privilege participantDeletePrivilege = createPrivilegeIfNotFound("DELETE_PARTICIPANT");
+        Privilege participantUpdatePrivilege = createPrivilegeIfNotFound("UPDATE_PARTICIPANT");
+        Privilege printParticipantCardPrivilege = createPrivilegeIfNotFound("PRINT_PARTICIPANT_CARD");
 
-        List<Privilege> adminPrivileges = Arrays.asList(
-                readPrivilege, writePrivilege);
+        List<Privilege> adminPrivileges
+                = Arrays.asList(
+                        privilegeReadPrivilege,
+                        userReadPrivilege,
+                        userCreatePrivilege,
+                        userDeletePrivilege,
+                        userUpdatePrivilege,
+                        userUpdatePrivilege,
+                        roleReadPrivilege,
+                        roleCreatePrivilege,
+                        roleDeletePrivilege,
+                        roleUpdatePrivilege,
+                        participantReadPrivilege,
+                        participantCreatePrivilege,
+                        participantUpdatePrivilege,
+                        participantDeletePrivilege
+                );
 
         createRoleIfNotFound("ROLE_ADMIN", adminPrivileges);
-        createRoleIfNotFound("ROLE_USER", Arrays.asList(readPrivilege));
+        createRoleIfNotFound("ROLE_USER", Arrays.asList(
+                participantReadPrivilege,
+                participantCreatePrivilege,
+                participantUpdatePrivilege,
+                participantDeletePrivilege));
 
 //        SETUP USER
         Role adminRole = roleRepository.findByName("ROLE_ADMIN");
         User user = new User();
-        user.setFirstName("Test");
-        user.setLastName("Test");
-        user.setPassword(passwordEncoder.encode("test"));
-        user.setEmail("test@test.com");
+        user.setFirstName("Mohammad Badar");
+        user.setLastName("Hashimi");
+        user.setPassword(passwordEncoder.encode("admin1235"));
+        user.setEmail("admin@test.com");
         user.setRoles(Arrays.asList(adminRole));
         user.setEnabled(true);
         userRepository.save(user);
