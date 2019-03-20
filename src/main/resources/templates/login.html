@@ -2,6 +2,11 @@
 <!DOCTYPE html>
 <html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{layouts/layout}">
 
+    <style>
+        .parsley-error{
+            color:red;
+        }
+    </style>
     <body>
 
 
@@ -9,6 +14,7 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper" layout:fragment="content">
+            
 
             <!-- right column -->
             <div class="col-md-8 col-md-offset-2" style="margin-top: 5%">
@@ -19,7 +25,7 @@
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form class="form-horizontal" th:action="@{/login}" method="post">
+                    <form class="form-horizontal " id="dataform" th:action="@{/login}" method="post" data-parsley-validate>
 
                         <div th:if="${param.error}">
                             <div class="alert alert-danger">
@@ -37,25 +43,17 @@
                                 <label for="username" class="col-sm-2 control-label">ایمیل</label>
 
                                 <div class="col-sm-10">
-                                    <input name="username" id="username" required="true" autofocus="true" type="email" class="form-control" placeholder="ایمیل">
+                                    <input name="username" id="username" data-parsley-trigger="change" data-parsley-validation-threshold="10" data-parsley-minlength="10" data-parsley-maxlength="100" required="true" autofocus="true" type="email" class="form-control" placeholder="ایمیل">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="password" class="col-sm-2 control-label">رمز عبور</label>
 
                                 <div class="col-sm-10">
-                                    <input  type="password" name="password" id="password" class="form-control" placeholder="رمز عبور">
+                                    <input  type="password" name="password" id="password" required="true" data-parsley-validation-threshold="10" data-parsley-minlength="6" data-parsley-maxlength="32"  data-parsley-trigger="change"  class="form-control" placeholder="رمز عبور">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"> مرا به خاطر بسپار
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
+                           
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer">

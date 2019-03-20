@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO" monitorInterval="30">
+    <Properties>
+        <Property name="LOG_PATTERN">
+        
+            [%highlight{%-5level}] \n %d{DEFAULT} \n %c{1}.%M() \n- %msg%n%throwable{short.lineNumber}
+       
+        </Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="[%highlight{%-5level}] %d{DEFAULT}  %c{1}.%M() - %msg%n%throwable{short.lineNumber}"/>
+        </Console>
+
+        <!-- Rolling File Appender -->
+        <RollingFile name="FileAppender" fileName="logs/adapter-logs.log"
+                     filePattern="logs/mm-adapter-logs-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout>
+                <Pattern>${LOG_PATTERN}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" />
+                <SizeBasedTriggeringPolicy size="10MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+        <!-- SMTP Appender
+       <SMTP name="MailAppender"
+             subject="Log4j2 Demo [PROD]"
+             to="mohammadbadarhashimi@gmail.com"
+             from="aps.log@aps.af"
+             smtpHost="yourSMTPHost"
+             smtpPort="587"
+             smtpUsername="yourSMTPUsername"
+             smtpPassword="yourSMTPPassword"
+             bufferSize="1">
+           <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+           <PatternLayout>
+               <Pattern>${LOG_PATTERN}</Pattern>
+           </PatternLayout>
+       </SMTP>
+        -->
+    </Appenders>
+
+    <Loggers>
+        <Logger name="af.aps" level="debug"
+                additivity="false">
+            <AppenderRef ref="ConsoleAppender" />
+            <AppenderRef ref="FileAppender" />
+        </Logger>
+
+        <Root level="info">
+            <AppenderRef ref="ConsoleAppender" />
+            <AppenderRef ref="FileAppender" />
+        </Root>
+    </Loggers>
+</Configuration>

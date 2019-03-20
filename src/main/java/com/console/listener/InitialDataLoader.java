@@ -59,7 +59,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
         Privilege userCreatePrivilege = createPrivilegeIfNotFound("CREATE_USER");
         Privilege userDeletePrivilege = createPrivilegeIfNotFound("DELETE_USER");
         Privilege userUpdatePrivilege = createPrivilegeIfNotFound("UPDATE_USER");
-        Privilege roleReadPrivilege = createPrivilegeIfNotFound("READ_ROlE");
+        Privilege roleReadPrivilege = createPrivilegeIfNotFound("READ_ROLE");
         Privilege roleCreatePrivilege = createPrivilegeIfNotFound("CREATE_ROLE");
         Privilege roleDeletePrivilege = createPrivilegeIfNotFound("DELETE_ROLE");
         Privilege roleUpdatePrivilege = createPrivilegeIfNotFound("UPDATE_ROLE");

@@ -23,7 +23,7 @@
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form class="form-horizontal" th:action="@{/role/save}" method="post">
+                        <form class="form-horizontal" id="dataform" th:action="@{/role/save}" method="post" data-parsley-validate  >
 
                             <div th:if="${param.error}">
                                 <div class="alert alert-danger">
@@ -38,7 +38,7 @@
                                     <label for="name" class="col-sm-2 control-label">نام  </label>
 
                                     <div class="col-sm-10">
-                                        <input  name="name" id="firstName" required="true" type="text" class="form-control" placeholder="نام  "/>
+                                        <input  name="name" id="firstName" required="true" type="text" class="form-control" data-parsley-trigger="change" data-parsley-validation-threshold="10" data-parsley-minlength="3" data-parsley-maxlength="32"/>
                                     </div>
                                 </div>
 
@@ -48,7 +48,7 @@
                                     <label for="privileges" class="col-sm-2 control-label">صلاحیت ها</label>
 
                                     <div class="col-sm-10">
-                                        <select  id="privileges" name="privileges" class="form-control" size="10" multiple="multiple">
+                                        <select  id="privileges" name="privileges" class="form-control" size="10" multiple="multiple" data-parsley-trigger="change" required="">
                                             <option th:each="row : ${privileges}"
                                                     th:value="${{row.id}}"
                                                     th:text="${row.name}">
@@ -83,7 +83,7 @@
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form class="form-horizontal" th:action="@{/role/update}" method="post">
+                        <form class="form-horizontal" id="dataform" th:action="@{/role/update}" method="post" data-parsley-validate>
 
                             <input type="hidden" name="id" th:value="${{role.id}}"/>
 
@@ -94,7 +94,7 @@
                                     <label for="name" class="col-sm-2 control-label">نام  </label>
 
                                     <div class="col-sm-10">
-                                        <input  name="name" th:value="${{role.name}}" id="firstName" required="true" type="text" class="form-control" placeholder="نام  "/>
+                                        <input  name="name" th:value="${{role.name}}" id="firstName" required="true" type="text" class="form-control" placeholder="نام  " data-parsley-trigger="change" data-parsley-validation-threshold="10" data-parsley-minlength="3" data-parsley-maxlength="32"/>
                                     </div>
                                 </div>
 
@@ -104,7 +104,7 @@
                                     <label for="privileges" class="col-sm-2 control-label">صلاحیت ها</label>
 
                                     <div class="col-sm-10">
-                                        <select  id="privileges" name="privileges" class="form-control" size="10" multiple="multiple">
+                                        <select  id="privileges" name="privileges" class="form-control" size="10" multiple="multiple" data-parsley-trigger="change" required="true">
                                             <option th:each="row : ${privileges}"
                                                     th:value="${{row.id}}"
                                                     th:text="${row.name}"

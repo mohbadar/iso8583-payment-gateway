@@ -28,6 +28,7 @@
     <script th:src="@{/js/dashboard.js}"></script>
     <script th:src="@{/js/jquery.dataTables.min.js}"></script>
     <script th:src="@{/js/dataTables.bootstrap.min.js}"></script>
+    <script th:src="@{/js/parsley.min.js}" />
 
     <script>
         $(function () {
@@ -41,6 +42,18 @@
                 'autoHeigth': true
             })
         })
-    </script>
+
+  $(function () {
+  $('#dataform').parsley().on('field:validated', function() {
+    var ok = $('.parsley-error').length === 0;
+    $('.bs-callout-info').toggleClass('hidden', !ok);
+    $('.bs-callout-warning').toggleClass('hidden', ok);
+  })
+  .on('form:submit', function() {
+    return false; // Don't submit form for this demo
+  });
+});
+
+</script>
 </div>
 <!-- END SCRIPTS -->
