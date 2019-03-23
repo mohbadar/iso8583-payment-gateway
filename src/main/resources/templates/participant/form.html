@@ -24,7 +24,7 @@
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form class="form-horizontal" th:action="@{/participant/save}" method="post">  
+                        <form class="form-horizontal" id="dataform" th:action="@{/participant/save}" method="post" data-parsley-validate>  
                             <!--enctype="multipart/form-data">-->
 
                             <div th:if="${message}">
@@ -39,7 +39,7 @@
                                     <label for="firstName" class="col-sm-2 control-label">نام  </label>
 
                                     <div class="col-sm-10">
-                                        <input name="firstName" id="firstName" required="true" type="text" class="form-control" placeholder="نام  "/>
+                                        <input name="firstName" id="firstName"  type="text" class="form-control" placeholder="نام  "  data-parsley-trigger="change" data-parsley-validation-threshold="10" data-parsley-minlength="3" data-parsley-maxlength="32"/>
                                     </div>
 
                                 </div>
@@ -48,7 +48,7 @@
                                     <label for="lastName" class="col-sm-2 control-label">تخلص  </label>
 
                                     <div class="col-sm-10">
-                                        <input name="lastName" id="lastName" required="true" type="text" class="form-control" placeholder="تخلص  "/>
+                                        <input name="lastName" id="lastName"  data-parsley-trigger="change" data-parsley-validation-threshold="10" data-parsley-minlength="3" data-parsley-maxlength="32" type="text" class="form-control" placeholder="تخلص  "/>
                                     </div>
                                 </div>
 
@@ -56,7 +56,7 @@
                                     <label for="email" class="col-sm-2 control-label">ایمیل</label>
 
                                     <div class="col-sm-10">
-                                        <input name="email" id="username" required="true"  type="email" class="form-control" placeholder="ایمیل">
+                                        <input name="email" id="username" required="true"  type="email" class="form-control" placeholder="ایمیل"  data-parsley-trigger="change" data-parsley-validation-threshold="10" data-parsley-minlength="10" data-parsley-maxlength="128">
                                     </div>
                                 </div>
 
@@ -65,7 +65,7 @@
                                     <label for="phone" class="col-sm-2 control-label">شماره تماس</label>
 
                                     <div class="col-sm-10">
-                                        <input name="phone" id="username" required="true"  type="text" class="form-control" placeholder="شماره تماس">
+                                        <input name="phone" id="username" required="true"  type="text" class="form-control" placeholder="شماره تماس"  data-parsley-trigger="change" data-parsley-validation-threshold="10" data-parsley-minlength="8" data-parsley-maxlength="13">
                                     </div>
                                 </div>
 
@@ -73,7 +73,7 @@
                                     <label for="gender" class="col-sm-2 control-label">جنسیت</label>
                                     <div class="col-sm-10">
 
-                                        <select class="form-control" name="gender" id="gender">
+                                        <select class="form-control" name="gender" id="gender" required="true" data-parsley-trigger="change">
                                             <option value="1" selected>مرد</option>
                                             <option value="0">زن</option>
 
@@ -85,7 +85,7 @@
                                     <label for="status" class="col-sm-2 control-label">حالت مدنی</label>
                                     <div class="col-sm-10">
 
-                                        <select class="form-control" name="status" id="status">
+                                        <select class="form-control" name="status" id="status" required="true" data-parsley-trigger="change">
                                             <option value="married">متاهل</option>
                                             <option value="single">مجرد</option>
 
@@ -97,7 +97,7 @@
                                     <label for="education" class="col-sm-2 control-label">درجه تحصیل</label>
                                     <div class="col-sm-10">
 
-                                        <select class="form-control" name="education" id="education">
+                                        <select class="form-control" name="education" id="education" required="true" data-parsley-trigger="change" >
                                             <option value="uneducated">بی سواد</option>
                                             <option value="highschool">دوازده پاس</option>
                                             <option value="bachlor">لیسانس</option>
@@ -112,7 +112,7 @@
                                     <label for="province" class="col-sm-2 control-label">ولایت</label>
                                     <div class="col-sm-10">
 
-                                        <select class="form-control" name="province" id="province">
+                                        <select class="form-control" name="province" id="province" required="true" data-parsley-trigger="change">
                                             <option value="kabul">کابل</option>
                                             <option value="herat">هرات</option>
                                             <option value="bulkh">بلخ</option>
@@ -133,7 +133,7 @@
                                     <label for="district" class="col-sm-2 control-label"> ولسوالی </label>
 
                                     <div class="col-sm-10">
-                                        <input name="district" id="district" required="true" type="text" class="form-control" placeholder="ولسوالی  "/>
+                                        <input name="district" id="district"  data-parsley-trigger="change" data-parsley-validation-threshold="10" data-parsley-minlength="3" data-parsley-maxlength="32" type="text" class="form-control"  placeholder="ولسوالی  "/>
                                     </div>
                                 </div>
 
@@ -141,7 +141,7 @@
                                     <label for="birth_place" class="col-sm-2 control-label"> محل تولد </label>
 
                                     <div class="col-sm-10">
-                                        <input name="birth_place" id="birth_place" required="true" type="text" class="form-control" placeholder="محل تولد  "/>
+                                        <input name="birth_place" id="birth_place" required="true"  data-parsley-trigger="change" data-parsley-validation-threshold="10" data-parsley-minlength="3" data-parsley-maxlength="32" type="text" class="form-control" placeholder="محل تولد  "/>
                                     </div>
                                 </div>
 
@@ -149,7 +149,7 @@
                                     <label for="birth_year" class="col-sm-2 control-label"> سال تولد </label>
 
                                     <div class="col-sm-10">
-                                        <input name="birth_year" id="birth_year" required="true" type="number" class="form-control" placeholder="سال تولد  "/>
+                                        <input name="birth_year" id="birth_year"  data-parsley-trigger="change" data-parsley-validation-threshold="3" data-parsley-minlength="4" data-parsley-maxlength="4" type="number" class="form-control" placeholder="سال تولد  "/>
                                     </div>
                                 </div>
 
@@ -158,7 +158,7 @@
                                     <label for="tazkra_serial_number" class="col-sm-2 control-label"> نمبر صکوک </label>
 
                                     <div class="col-sm-10">
-                                        <input name="tazkra_serial_number" id="tazkra_serial_number" required="true" type="number" class="form-control" placeholder="نمبر صکوک  "/>
+                                        <input name="tazkra_serial_number" id="tazkra_serial_number"  data-parsley-trigger="change" data-parsley-validation-threshold="10" data-parsley-minlength="6" data-parsley-maxlength="12" type="number" class="form-control" placeholder="نمبر صکوک  "/>
                                     </div>
                                 </div>
 
@@ -185,7 +185,7 @@
                                     <label for="address" class="col-sm-2 control-label"> آدرس </label>
 
                                     <div class="col-sm-10">
-                                        <textarea name="address" id="address" required="true" type="text" class="form-control" placeholder="آدرس  "></textarea>
+                                        <textarea name="address" id="address"  data-parsley-trigger="change" data-parsley-validation-threshold="10" data-parsley-minlength="12" data-parsley-maxlength="256" type="text" class="form-control" placeholder="آدرس  "></textarea>
                                     </div>
                                 </div>
 
@@ -212,20 +212,25 @@
             </div>
 
             <!--UPDATE-->
-            <div th:if="${isUpdate}">
+           <div th:if="${isUpdate}">
 
                 <!-- right column -->
                 <div class="col-md-10 col-md-offset-1" style="margin-top: 5%">
                     <!-- Horizontal Form -->
                     <div class="box box-info">
                         <div class="box-header with-border">
-                            <h3 class="box-title">فرم تصحیح حساب  </h3>
+                            <h3 class="box-title">فرم راجستر اشتراک کننده جدید </h3>
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form class="form-horizontal" th:action="@{/user/update}" method="post">
+                        <form class="form-horizontal" id="dataform" th:action="@{/participant/update}" method="post" data-parsley-validate>  
+                            <!--enctype="multipart/form-data">-->
 
-                            <input type="hidden" name="id" th:value="${{user.id}}"/>
+                            <div th:if="${message}">
+                                <div class="alert alert-danger">
+                                    <p th:text="${message}"/>                                </div>
+                            </div>
+                            <input type="hidden" name="id" th:value="${{participant.id}}"/>
 
 
                             <div class="box-body">
@@ -234,15 +239,16 @@
                                     <label for="firstName" class="col-sm-2 control-label">نام  </label>
 
                                     <div class="col-sm-10">
-                                        <input th:value="${{user.firstName}}" name="firstName" id="firstName" required="true" type="text" class="form-control" placeholder="نام  "/>
+                                        <input th:value="${{participant.firstName}}" name="firstName" id="firstName"  type="text" class="form-control" placeholder="نام  "  data-parsley-trigger="change" data-parsley-validation-threshold="10" data-parsley-minlength="3" data-parsley-maxlength="32"/>
                                     </div>
+
                                 </div>
 
                                 <div class="form-group">
                                     <label for="lastName" class="col-sm-2 control-label">تخلص  </label>
 
                                     <div class="col-sm-10">
-                                        <input th:value="${{user.lastName}}" name="lastName" id="lastName" required="true" type="text" class="form-control" placeholder="تخلص  "/>
+                                        <input th:value="${{participant.lastName}}" name="lastName" id="lastName"  data-parsley-trigger="change" data-parsley-validation-threshold="10" data-parsley-minlength="3" data-parsley-maxlength="32" type="text" class="form-control" placeholder="تخلص  "/>
                                     </div>
                                 </div>
 
@@ -250,49 +256,160 @@
                                     <label for="email" class="col-sm-2 control-label">ایمیل</label>
 
                                     <div class="col-sm-10">
-                                        <input th:value="${{user.email}}" name="email" id="username" required="true"  type="email" class="form-control" placeholder="ایمیل">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="password" class="col-sm-2 control-label">رمز عبور</label>
-
-                                    <div class="col-sm-10">
-                                        <input  type="password" name="password" id="password" class="form-control" placeholder="رمز عبور">
+                                        <input name="email" id="username" required="true"  type="email" class="form-control" placeholder="ایمیل"  data-parsley-trigger="change" data-parsley-validation-threshold="10" data-parsley-minlength="10" data-parsley-maxlength="128">
                                     </div>
                                 </div>
 
+
                                 <div class="form-group">
-                                    <label for="roles" class="col-sm-2 control-label">رول ها</label>
+                                    <label for="phone" class="col-sm-2 control-label">شماره تماس</label>
 
                                     <div class="col-sm-10">
-                                        <select  id="roles" name="roles" class="form-control" size="10" multiple="multiple">
-                                            <option th:each="row : ${roles}"
-                                                    th:value="${{row.id}}"
-                                                    th:text="${row.name}"
-                                                    th:selected="${user.hasRole(row)}"
-                                                    >
-                                                رول ها
-                                            </option>
+                                        <input name="phone" id="username" required="true"  type="text" class="form-control" placeholder="شماره تماس"  data-parsley-trigger="change" data-parsley-validation-threshold="10" data-parsley-minlength="8" data-parsley-maxlength="13">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="gender" class="col-sm-2 control-label">جنسیت</label>
+                                    <div class="col-sm-10">
+
+                                        <select class="form-control" name="gender" id="gender" required="true" data-parsley-trigger="change">
+                                            <option value="1" selected>مرد</option>
+                                            <option value="0">زن</option>
+
                                         </select>
                                     </div>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="status" class="col-sm-2 control-label">حالت مدنی</label>
+                                    <div class="col-sm-10">
+
+                                        <select class="form-control" name="status" id="status" required="true" data-parsley-trigger="change">
+                                            <option value="married">متاهل</option>
+                                            <option value="single">مجرد</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="education" class="col-sm-2 control-label">درجه تحصیل</label>
+                                    <div class="col-sm-10">
+
+                                        <select class="form-control" name="education" id="education" required="true" data-parsley-trigger="change" >
+                                            <option value="uneducated">بی سواد</option>
+                                            <option value="highschool">دوازده پاس</option>
+                                            <option value="bachlor">لیسانس</option>
+                                            <option value="master">ماستر</option>
+                                            <option value="phd">داکتر</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="province" class="col-sm-2 control-label">ولایت</label>
+                                    <div class="col-sm-10">
+
+                                        <select class="form-control" name="province" id="province" required="true" data-parsley-trigger="change">
+                                            <option value="kabul">کابل</option>
+                                            <option value="herat">هرات</option>
+                                            <option value="bulkh">بلخ</option>
+                                            <option value="nangrhar">ننګرهار</option>
+                                            <option value="ghazni">غزنی</option>
+                                            <option value="ghor">غور</option>
+                                            <option value="bamyan">بامیان</option>
+                                            <option value="dikondi">دایکندی</option>
+                                            <option value="samangan">سمنګان</option>
+                                            <option value="baghlan">بغلان</option>
+                                            <option value="parwan">پروان</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="district" class="col-sm-2 control-label"> ولسوالی </label>
+
+                                    <div class="col-sm-10">
+                                        <input name="district" id="district"  data-parsley-trigger="change" data-parsley-validation-threshold="10" data-parsley-minlength="3" data-parsley-maxlength="32" type="text" class="form-control"  placeholder="ولسوالی  "/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="birth_place" class="col-sm-2 control-label"> محل تولد </label>
+
+                                    <div class="col-sm-10">
+                                        <input name="birth_place" id="birth_place" required="true"  data-parsley-trigger="change" data-parsley-validation-threshold="10" data-parsley-minlength="3" data-parsley-maxlength="32" type="text" class="form-control" placeholder="محل تولد  "/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="birth_year" class="col-sm-2 control-label"> سال تولد </label>
+
+                                    <div class="col-sm-10">
+                                        <input name="birth_year" id="birth_year"  data-parsley-trigger="change" data-parsley-validation-threshold="3" data-parsley-minlength="4" data-parsley-maxlength="4" type="number" class="form-control" placeholder="سال تولد  "/>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="tazkra_serial_number" class="col-sm-2 control-label"> نمبر صکوک </label>
+
+                                    <div class="col-sm-10">
+                                        <input name="tazkra_serial_number" id="tazkra_serial_number"  data-parsley-trigger="change" data-parsley-validation-threshold="10" data-parsley-minlength="6" data-parsley-maxlength="12" type="number" class="form-control" placeholder="نمبر صکوک  "/>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="tazkra_page_number" class="col-sm-2 control-label"> نمبر تذکره </label>
+
+                                    <div class="col-sm-10">
+                                        <input name="tazkra_page_number" id="tazkra_page_number" required="true" type="number" class="form-control" placeholder="نمبر تذکره  "/>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="tazkra_juld" class="col-sm-2 control-label"> جلد </label>
+
+                                    <div class="col-sm-10">
+                                        <input name="tazkra_juld" id="tazkra_juld" required="true" type="text" class="form-control" placeholder="جلد  "/>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="address" class="col-sm-2 control-label"> آدرس </label>
+
+                                    <div class="col-sm-10">
+                                        <textarea name="address" id="address"  data-parsley-trigger="change" data-parsley-validation-threshold="10" data-parsley-minlength="12" data-parsley-maxlength="256" type="text" class="form-control" placeholder="آدرس  "></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="photo" class="col-sm-2 control-label"> تصویر </label>
+
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="file" name="photo" />
+                                    </div>
+                                </div>
+
 
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
                                 <button type="reset" class="btn btn-default">انصراف</button>
-                                <button type="submit" class="btn btn-info pull-right">ورود</button>
+                                <button type="submit" class="btn btn-info pull-right">راجستر</button>
                             </div>
                             <!-- /.box-footer -->
                         </form>
                     </div>
 
                 </div>
-
             </div>
-
-
-        </div>
 
 
         <!-- END CONTENT -->

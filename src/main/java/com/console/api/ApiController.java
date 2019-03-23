@@ -37,14 +37,15 @@ public class ApiController {
         }
         Participant p = participantService.getOne(id);
         ParticipantDto dto = new ParticipantDto();
+        dto.setId(p.getId());
         dto.setFirstName(p.getFirstName());
-        dto.setLastName(dto.getLastName());
+        dto.setLastName(p.getLastName());
         dto.setGender(p.getGender());
         dto.setStatus(p.getStatus());
         dto.setTazkraSerialNumber(p.getTazkraSerialNumber());
         dto.setTazkraPageNumber(p.getTazkraPageNumber());
         dto.setTazkraJuld(p.getTazkraJuld());
-        dto.setPhone(dto.getPhone());
+        dto.setPhone(p.getPhone());
         dto.setEmail(p.getEmail());
         dto.setAddress(p.getAddress());
         dto.setProvince(p.getProvince());

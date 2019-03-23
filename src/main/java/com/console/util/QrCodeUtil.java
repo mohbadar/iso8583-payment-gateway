@@ -5,6 +5,7 @@
  */
 package com.console.util;
 
+import com.console.storage.StorageException;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.WriterException;
@@ -17,9 +18,11 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.nio.file.FileSystems;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.EnumMap;
 import java.util.Map;
+import org.springframework.util.FileSystemUtils;
 
 /**
  *
@@ -29,12 +32,14 @@ public class QrCodeUtil {
 
     private String file_path = "C:\\Users\\Dell\\Documents\\NetBeansProjects\\console\\src\\main\\resources\\static\\images\\qrcode\\";
 
-    String QR_img_name = "123" + "_" + "UserGivenQRName" + ".png";
+    String QR_img_name = "123" + "_" + "Participant" + ".png";
     Path path = FileSystems.getDefault().getPath(file_path + QR_img_name);
 
     //the method for generating qr code image 
     public String generateQRCImg(String qrCharacterSet, String qrErrorCorrectionLevel, int width, int height,
             String qrContent, String qrImgExtension) throws WriterException, IOException {
+
+        deleteAll();
 
         Map<EncodeHintType, Object> hintMap = new EnumMap<EncodeHintType, Object>(EncodeHintType.class);
         hintMap.put(EncodeHintType.CHARACTER_SET, qrCharacterSet);
@@ -71,6 +76,18 @@ public class QrCodeUtil {
         //return "resources/images/qrcs/" + QR_img_name;
         return QR_img_name;
 
+    }
+
+    public void deleteAll() {
+        FileSystemUtils.deleteRecursively(path.toFile());
+    }
+
+    public void init() {
+        try {
+            Files.createDirectories(path);
+        } catch (IOException e) {
+            throw new StorageException("Could not initialize storage", e);
+        }
     }
 
 }

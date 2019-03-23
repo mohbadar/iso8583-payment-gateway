@@ -69,7 +69,7 @@ public class ParticipantController {
     @PostMapping(value = "/participant/save")
     @PreAuthorize("hasAuthority('CREATE_PARTICIPANT')")
     @Loggable
-    public ModelAndView saveParticipant(
+    public String saveParticipant(
             //            @RequestParam("photo") MultipartFile photo,
             @RequestParam("firstName") String firstName,
             @RequestParam("lastName") String lastName,
@@ -119,10 +119,10 @@ public class ParticipantController {
 
         redirectAttributes.addFlashAttribute("message",
                 "You successfully registered");
-        ModelAndView mv = new ModelAndView("participant/detail");
-        mv.addObject("participant", part);
-        mv.addObject("qrimg", generateQrCode(part));
-        return mv;
+//        ModelAndView mv = new ModelAndView("participant/detail");
+//        mv.addObject("participant", part);
+//        mv.addObject("qrimg", generateQrCode(part));
+        return "redirect:/participant/detail/"+part.getId();
     }
 
     @GetMapping("/participant/update/{id}")

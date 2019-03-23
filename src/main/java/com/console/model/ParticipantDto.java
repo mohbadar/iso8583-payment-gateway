@@ -24,7 +24,6 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 public class ParticipantDto implements Serializable {
-
     private Long id;
     private String firstName;
     private String lastName;
