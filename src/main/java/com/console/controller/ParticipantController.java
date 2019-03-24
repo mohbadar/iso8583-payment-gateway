@@ -34,11 +34,6 @@ public class ParticipantController {
 
     private final StorageService storageService;
 
-    private static final String QR_CHARACTER_SET = "UTF-8"; // or "ISO-8859-1"
-    private static final String QR_ERROR_CORRECTION_LEVEL = "L";
-    private static final int WIDTH = 350;
-    private static final int HEIGHT = 350;
-    private static final String QR_IMAGE_TYPE = "png";
 
     @Autowired
     public ParticipantController(StorageService storageService) {
@@ -149,34 +144,8 @@ public class ParticipantController {
     public ModelAndView detail(@PathVariable("id") Long id) {
         ModelAndView mv = new ModelAndView("participant/detail");
         mv.addObject("participant", participantService.getOne(id));
-        mv.addObject("qrimg", generateQrCode(participantService.getOne(id)));
+        mv.addObject("qrimg", QrCodeUtil.generateQrCode(participantService.getOne(id)));
         return mv;
-    }
-
-    public String generateQrCode(Participant p) {
-
-        String content = "";
-        String qrimg = "";
-
-        content += "1:SECURE*";
-        content += "2:CONCOUL-QR-01*";
-        content += "3:UTF-8*";
-        content += "4:S*";
-
-        content += "5:" + p.getId() + "*";
-        content += "6:" + p.getFirstName() + "*";
-        content += "7:" + p.getLastName() + "*";
-        content += "8:" + p.getProvince() + "*";
-        content += "9:" + p.getTazkraSerialNumber() + "*";
-        content += "10:" + p.getGender() + "*";
-
-        try {
-            qrimg = new QrCodeUtil().generateQRCImg(QR_CHARACTER_SET, QR_ERROR_CORRECTION_LEVEL, WIDTH, HEIGHT, content, QR_IMAGE_TYPE);
-        } catch (WriterException ex) {
-        } catch (IOException ex) {
-        }
-
-        return qrimg;
     }
 
     @GetMapping("/participant/card/{id}")
@@ -185,7 +154,7 @@ public class ParticipantController {
     public ModelAndView card(@PathVariable("id") Long id) {
         ModelAndView mv = new ModelAndView("participant/card");
         mv.addObject("participant", participantService.getOne(id));
-        mv.addObject("qrimg", generateQrCode(participantService.getOne(id)));
+        mv.addObject("qrimg", QrCodeUtil.generateQrCode(participantService.getOne(id)));
         return mv;
     }
 }

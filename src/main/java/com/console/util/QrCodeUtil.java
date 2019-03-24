@@ -5,6 +5,8 @@
  */
 package com.console.util;
 
+import com.console.config.aspect.Loggable;
+import com.console.model.Participant;
 import com.console.storage.StorageException;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
@@ -22,24 +24,31 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.EnumMap;
 import java.util.Map;
+import javax.imageio.ImageIO;
+import javax.imageio.stream.ImageOutputStream;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.FileSystemUtils;
 
 /**
  *
  * @author Dell
  */
+@Slf4j
 public class QrCodeUtil {
 
+    private static final String QR_CHARACTER_SET = "UTF-8"; // or "ISO-8859-1"
+    private static final String QR_ERROR_CORRECTION_LEVEL = "L";
+    private static final int WIDTH = 350;
+    private static final int HEIGHT = 350;
+    private static final String QR_IMAGE_TYPE = "png";
     private String file_path = "C:\\Users\\Dell\\Documents\\NetBeansProjects\\console\\src\\main\\resources\\static\\images\\qrcode\\";
-
+//    private String file_path = "/src/main/resources/static/images/qrcode";
     String QR_img_name = "123" + "_" + "Participant" + ".png";
     Path path = FileSystems.getDefault().getPath(file_path + QR_img_name);
 
     //the method for generating qr code image 
     public String generateQRCImg(String qrCharacterSet, String qrErrorCorrectionLevel, int width, int height,
             String qrContent, String qrImgExtension) throws WriterException, IOException {
-
-        deleteAll();
 
         Map<EncodeHintType, Object> hintMap = new EnumMap<EncodeHintType, Object>(EncodeHintType.class);
         hintMap.put(EncodeHintType.CHARACTER_SET, qrCharacterSet);
@@ -70,7 +79,7 @@ public class QrCodeUtil {
                 }
             }
         }
-        //ImageIO.write(qr_image, qrImgExtension, path);
+//        ImageIO.write(qr_image, qrImgExtension, (ImageOutputStream) path);
 
         MatrixToImageWriter.writeToPath(byteMatrix, qrImgExtension, path);
         //return "resources/images/qrcs/" + QR_img_name;
@@ -88,6 +97,33 @@ public class QrCodeUtil {
         } catch (IOException e) {
             throw new StorageException("Could not initialize storage", e);
         }
+    }
+
+    @Loggable
+    public static String generateQrCode(Participant p) {
+        log.info("Generating a QR-CODE....");
+        String content = "";
+        String qrimg = "";
+
+        content += "1:SECURE*";
+        content += "2:CONCOUL-QR-01*";
+        content += "3:UTF-8*";
+        content += "4:S*";
+
+        content += "5:" + p.getId() + "*";
+        content += "6:" + p.getFirstName() + "*";
+        content += "7:" + p.getLastName() + "*";
+        content += "8:" + p.getProvince() + "*";
+        content += "9:" + p.getTazkraSerialNumber() + "*";
+        content += "10:" + p.getGender() + "*";
+
+        try {
+            qrimg = new QrCodeUtil().generateQRCImg(QR_CHARACTER_SET, QR_ERROR_CORRECTION_LEVEL, WIDTH, HEIGHT, content, QR_IMAGE_TYPE);
+        } catch (WriterException ex) {
+        } catch (IOException ex) {
+        }
+
+        return qrimg;
     }
 
 }

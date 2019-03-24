@@ -94,16 +94,17 @@
         </dependency>
         
         <!--        MySQL
+-->        
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
-        </dependency>-->
+        </dependency>
         <!--H2-->
-        <dependency>
+<!--        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-        </dependency>
+        </dependency>-->
 
         
         <!--Lombok-->
