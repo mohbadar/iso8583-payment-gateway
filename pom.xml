@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.peace</groupId>
-    <artifactId>console</artifactId>
+    <artifactId>switch</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>council</name>
+    <name>switch</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -76,9 +76,24 @@
             <artifactId>spring-boot-devtools</artifactId>
         </dependency>
         
+        <!--Spring Retry-->
         <dependency>
             <groupId>org.springframework.retry</groupId>
             <artifactId>spring-retry</artifactId>
+        </dependency>
+        
+        <!--NETTY-->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>4.1.33.Final</version>
+        </dependency>
+
+        <!--J8583-->
+        <dependency>
+            <groupId>net.sf.j8583</groupId>
+            <artifactId>j8583</artifactId>
+            <version>1.12.0</version>
         </dependency>
         
         <!--AOP-->
@@ -93,15 +108,17 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         
+ 
+        
         <!--        MySQL
--->        
+        -->        
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
         </dependency>
         <!--H2-->
-<!--        <dependency>
+        <!--        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>-->

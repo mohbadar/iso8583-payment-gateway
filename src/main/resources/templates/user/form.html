@@ -41,7 +41,7 @@
                                     <div class="col-sm-10">
                                         <input name="firstName" id="firstName" required="true" type="text" class="form-control" placeholder="نام  "/>
                                     </div>
-                                    
+
                                 </div>
 
                                 <div class="form-group">
@@ -53,10 +53,10 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="email" class="col-sm-2 control-label">ایمیل</label>
+                                    <label for="email" class="col-sm-2 control-label">نام کاربری</label>
 
                                     <div class="col-sm-10">
-                                        <input name="email" id="username" required="true"  type="email" class="form-control" placeholder="ایمیل">
+                                        <input name="email" id="username" required="true"  type="text" class="form-control" placeholder="نام کاربری یا شناسه ای وسیله">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -107,63 +107,63 @@
                         <!-- /.box-header -->
                         <!-- form start -->
                         <form class="form-horizontal" th:action="@{/user/update}" method="post">
-                            
+
                             <input type="hidden" name="id" th:value="${{user.id}}"/>
 
 
-<div class="box-body">
+                            <div class="box-body">
 
-    <div class="form-group">
-        <label for="firstName" class="col-sm-2 control-label">نام  </label>
+                                <div class="form-group">
+                                    <label for="firstName" class="col-sm-2 control-label">نام  </label>
 
-        <div class="col-sm-10">
-            <input th:value="${{user.firstName}}" name="firstName" id="firstName" required="true" type="text" class="form-control" placeholder="نام  "/>
-        </div>
-    </div>
+                                    <div class="col-sm-10">
+                                        <input th:value="${{user.firstName}}" name="firstName" id="firstName" required="true" type="text" class="form-control" placeholder="نام  "/>
+                                    </div>
+                                </div>
 
-    <div class="form-group">
-        <label for="lastName" class="col-sm-2 control-label">تخلص  </label>
+                                <div class="form-group">
+                                    <label for="lastName" class="col-sm-2 control-label">تخلص  </label>
 
-        <div class="col-sm-10">
-            <input th:value="${{user.lastName}}" name="lastName" id="lastName" required="true" type="text" class="form-control" placeholder="تخلص  "/>
-        </div>
-    </div>
+                                    <div class="col-sm-10">
+                                        <input th:value="${{user.lastName}}" name="lastName" id="lastName" required="true" type="text" class="form-control" placeholder="تخلص  "/>
+                                    </div>
+                                </div>
 
-    <div class="form-group">
-        <label for="email" class="col-sm-2 control-label">ایمیل</label>
+                                <div class="form-group">
+                                    <label for="email" class="col-sm-2 control-label">نام کاربری</label>
 
-        <div class="col-sm-10">
-            <input th:value="${{user.email}}" name="email" id="username" required="true"  type="email" class="form-control" placeholder="ایمیل">
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="password" class="col-sm-2 control-label">رمز عبور</label>
+                                    <div class="col-sm-10">
+                                        <input th:value="${{user.email}}" name="email" id="username" required="true"  type="text" class="form-control" placeholder="نام کاربری یا شناسه ای وسیله">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="col-sm-2 control-label">رمز عبور</label>
 
-        <div class="col-sm-10">
-            <input  type="password" name="password" id="password" class="form-control" placeholder="رمز عبور">
-        </div>
-    </div>
+                                    <div class="col-sm-10">
+                                        <input  type="password" name="password" id="password" class="form-control" placeholder="رمز عبور">
+                                    </div>
+                                </div>
 
-    <div class="form-group">
-        <label for="roles" class="col-sm-2 control-label">رول ها</label>
+                                <div class="form-group">
+                                    <label for="roles" class="col-sm-2 control-label">رول ها</label>
 
-        <div class="col-sm-10">
-            <select  id="roles" name="roles" class="form-control" size="10" multiple="multiple">
-                <option th:each="row : ${roles}"
-                        th:value="${{row.id}}"
-                        th:text="${row.name}"
-                        th:selected="${user.hasRole(row)}"
-                        >
-                    رول ها
-                </option>
-            </select>
-        </div>
-    </div>
+                                    <div class="col-sm-10">
+                                        <select  id="roles" name="roles" class="form-control" size="10" multiple="multiple">
+                                            <option th:each="row : ${roles}"
+                                                    th:value="${{row.id}}"
+                                                    th:text="${row.name}"
+                                                    th:selected="${user.hasRole(row)}"
+                                                    >
+                                                رول ها
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
 
-</div>
-<!-- /.box-body -->
-<div class="box-footer">
-    <button type="reset" class="btn btn-default">انصراف</button>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <button type="reset" class="btn btn-default">انصراف</button>
                                 <button type="submit" class="btn btn-info pull-right">ورود</button>
                             </div>
                             <!-- /.box-footer -->

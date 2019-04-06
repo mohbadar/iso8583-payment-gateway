@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE j8583-config PUBLIC "-//J8583//DTD CONFIG 1.0//EN"
+"http://j8583.sourceforge.net/j8583.dtd">
+
+<j8583-config>
+    
+    
+    <!--Header info-->
+    <!--    <header type="1200">ISO015000050</header>
+    <header type="1210">ISO015000055</header>
+    <header type="1220">ISO015000050</header>
+    <header type="1230">ISO015000055</header>
+    <header type="1100">ISO015000050</header>
+    <header type="1110">ISO015000055</header>
+    <header type="1400">ISO015000050</header>
+    <header type="1410">ISO015000055</header>
+    <header type="1800">ISO015000010</header>
+    <header type="1810">ISO015000015</header>
+    <header type="1804">ISO015000010</header>
+    <header type="1814">ISO015000015</header>
+    -->
+        
+    <parse type="1000">
+        
+        <!--Primary Account Number-->
+        <field type="LLVAR" length="19" num="2"></field> 
+        
+        <!--Processing Code-->
+        <field type="NUMERIC" length="6" num="3"></field> 
+        
+        <!--Amount, Transaction-->
+        <field length="12" type="AMOUNT" num="4"></field>
+        
+        <!--Amount, Account-->
+        <field length="12" type="NUMERIC" num="5"></field>
+        
+        <!--Amount, Cardholder Billing-->
+        <field length="12" type="NUMERIC" num="6"></field>
+        
+        <!--Date and time transmission-->
+        <!--consider missing in SV message MMDDhhmmss-->
+        <field length="10" type="NUMERIC" num="7"></field> 
+        
+        <!--amount, cardholder billing fee-->
+        <!--Missing in SV message-->
+        <field length="8" type="NUMERIC" num="8" ></field>
+        
+        <!--Conversion Rate, Cardholder Billing--> 
+        <field length="8" type="NUMERIC" num="9"></field>
+        
+        
+        <!--Conversion Rate, Account-->
+        <field length="8" type="NUMERIC" num="10"></field>
+        
+        <!--Systems Trace Audit Number--> 
+        <field length="6" type="NUMERIC" num="11"></field>
+        
+        <!--Date & Time, Local Transaction #Confusion -->
+        <field length="12" type="NUMERIC" num="12"></field>
+        
+        <!--Date, effective-->
+        <!--Time, Local Transaction-->
+        <field length="4" type="DATE4" num="13"></field>
+          
+        <!--Date, Expiration-->
+        <field length="4" type="DATE4" num="14">0225</field>
+        
+        <!--Settlement Date-->
+        <!--Mis configuration with SV-->
+        <field length="4" type="NUMERIC" num="15"></field>
+        
+        <!--Date, conversion-->
+        <field length="4" type="NUMERIC" num="16"></field>
+        
+        <!--Date, capture-->
+        <field length="4" type="NUMERIC" num="17"></field>
+        
+        <!--Merchant Type-->
+        <field length="4" type="NUMERIC" num="18"></field>
+        
+        
+        <!--Country code, acquiring institution-->
+        <field length="3" type="NUMERIC" num="19"></field>
+        
+        <!--Country code, primary account number-->     
+        <field length="3" type="NUMERIC" num="20"></field>
+        
+        <!--Country code, forwarding institution-->
+        <field length="3" type="NUMERIC" num="21"></field>
+        
+        <!--Point of service data code-->
+        <field length="12" type="ALPHA" num="22"></field>
+        
+        <!--card sequence number-->
+        <field length="3" type="NUMERIC" num="23"></field>
+
+        <!--function code-->
+        <field length="3" type="NUMERIC" num="24"></field>
+        
+        <!--Message reason code-->
+        <field length="4" type="NUMERIC" num="25"></field>
+        
+        <!--card acceptor business code-->
+        <field length="4" type="NUMERIC" num="26"></field>
+        
+        <!--approval code length-->
+        <field length="1" type="NUMERIC" num="27"></field>
+        
+        <!--date, reconciliation-->
+        <field length="6" type="NUMERIC" num="28"></field>
+        
+        <!--reconciliation indicator-->
+        <field length="3" type="NUMERIC" num="29"></field>
+                
+        <!--amounts, original-->
+        <field length="24" type="NUMERIC" num="30"></field>
+        
+        <!--acquirer reference data-->
+        <field length="99" type="LLVAR" num="31"></field>
+        
+        <!--Acquiring Institution Identification Code-->
+        <field length="11" type="LLVAR" num="32"></field>
+        
+        <!--forwarding institution identification code-->
+        <field length="11" type="LLVAR" num="33"></field>
+        
+        <!--primary account number, extended-->
+        <field length="28" type="LLVAR" num="34"></field>
+        
+        <!--track 2 data-->
+        <field length="37" type="LLVAR" num="35"></field>
+        
+        <!--track 3 data-->
+        <field length="104" type="LLLVAR" num="36"></field>
+        
+        <!--Retrieval Reference Number--> 
+        <field length="12" type="ALPHA" num="37"></field>
+        
+        <!-- Authorisation Identification Response -->
+        <field length="6" type="ALPHA" num="38"></field>
+
+        <!--action code-->
+        <field length="3" type="ALPHA" num="39"></field>
+        
+        <!--service code-->
+        <field length="3" type="ALPHA" num="40"></field>
+        
+        <!--Card Acceptor Terminal Identification--> 
+        <field length="8" type="ALPHA" num="41"></field>
+        
+        <!--Card Acceptor Merchant Identification-->
+        <field length="15" type="ALPHA" num="42"></field>
+
+        <!--Card Acceptor Name and Location--> 
+        <field length="40" type="ALPHA" num="43"></field>
+        
+        <!--additional response data-->
+        <field length="99" type="LLVAR" num="44"></field>
+        
+        <!--track 1 data-->
+        <field length="76" type="LLVAR" num="45"></field>
+        
+        <!--amounts, fees-->
+        <field length="204" type="LLLVAR" num="46"></field>
+        
+        <!--additional data - national-->
+        <field length="999" type="LLLVAR" num="47"></field>
+        
+        <!--Additional Data-->
+        <field length="999" type="LLLVAR" num="48"></field>
+        
+        <!--Currency Code, Transaction--> 
+        <field length="3" type="NUMERIC" num="49"></field>
+
+        <!--Currency Code, Account--> 
+        <field length="3" type="NUMERIC" num="50"></field>
+
+        <!--Currency Code, Cardholder Billing-->
+        <field length="3" type="NUMERIC" num="51"></field>
+        
+        <!--Personal identification number data -->
+        <field length="8" type="BINARY" num="52"></field>
+        
+        <!--Security related control information--> 
+        <field length="16" type="NUMERIC" num="53"></field>  
+        
+        <!--Additional Amounts-->
+        <field length="999" type="LLVAR" num="54"></field>
+        
+        <!--original data elements-->
+        <field length="54" type="LLVAR" num="56"></field>
+        
+        <!--authorization life cycle code-->
+        <field length="3" type="NUMERIC" num="57"></field>
+        
+        <!--authorizing agent institution identification code-->
+        <field length="11" type="LLVAR" num="58"></field>
+        
+        <!--transport data-->
+        <field length="999" type="LLLVAR" num="59"></field>
+        
+        <!--settlement request: batch number, advice transactions: original transaction amount-->
+        <field length="999" type="LLLVAR" num="60"></field>
+        
+        <!--Additional Amounts and Counters--> 
+        <field length="999" type="LLLVAR" num="61"></field>
+        
+        <!--Mini-statement data--> 
+        <field length="340" type="LLLVAR" num="62"></field>
+        
+        <!--Account Balance--> 
+        <field length="12" type="NUMERIC" num="63"></field>
+        
+        <!--Primary MAC Data-->
+        <field length="8" type="BINARY" num="64"></field>
+        
+        <!--amounts, original fees-->
+        <field length="204" type="LLLVAR" num="66"></field>
+        
+        <!--extended payment data-->
+        <field length="2" type="NUMERIC" num="67"></field>
+        
+        <!--country code, receiving institution-->
+        <field length="3" type="NUMERIC" num="68"></field>
+        
+        <!--country code, settlement institution-->
+        <field length="3" type="NUMERIC" num="69"></field>
+        
+        <!--country code, authorizing agent institution-->
+        <field length="3" type="NUMERIC" num="70"></field>
+
+        <!--message number-->
+        <field length="8" type="NUMERIC" num="71"></field>
+        
+        <!--data record-->
+        <field length="999" type="LLLVAR" num="72"></field>
+        
+        <!--date, action-->
+        <field length="6" type="NUMERIC" num="73"></field>
+
+        <!--credits, number-->
+        <field length="10" type="NUMERIC" num="74"></field>
+        
+        <!--credits, reversal number-->
+        <field length="10" type="NUMERIC" num="75"></field>
+        
+        <!--debits, number-->
+        <field length="10" type="NUMERIC" num="76"></field>
+        
+        <!--debits, reversal number-->
+        <field length="10" type="NUMERIC" num="77"></field>
+        
+        <!--transfer, number-->
+        <field length="10" type="NUMERIC" num="78"></field>
+        
+        <!--transfer, reversal number-->
+        <field length="10" type="NUMERIC" num="79"></field>
+        
+        <!--inquiries, number-->
+        <field length="10" type="NUMERIC" num="80"></field>
+        
+        <!--authorizations, number-->
+        <field length="10" type="NUMERIC" num="81"></field>
+        
+        <!--inquiries, reversal number-->
+        <field length="10" type="NUMERIC" num="82"></field>
+        
+        <!--payments, number-->
+        <field length="10" type="NUMERIC" num="83"></field>
+                
+        <!--payments, reversal number-->
+        <field length="10" type="NUMERIC" num="84"></field>
+        
+        <!--fee collections, number-->
+        <field length="10" type="NUMERIC" num="85"></field>
+        
+        <!--credits, amount -'-->
+        <field length="16" type="NUMERIC" num="86"></field>
+
+        <!--credits, reversal amount-->
+        <field length="16" type="NUMERIC" num="87"></field>
+
+        <!--debits, amount -'-->
+        <field length="16" type="NUMERIC" num="88"></field>
+
+        <!--debits, reversal amount-->
+        <field length="16" type="NUMERIC" num="89"></field>
+        
+        <!--authorizations, reversal number-->
+        <field length="10" type="NUMERIC" num="90"></field>
+        
+        <!--Action Code -->
+        <field length="1" type="NUMERIC" num="91"></field>
+
+        <!--country code, transaction originator institution-->
+        <field length="3" type="NUMERIC" num="92"></field>
+        
+        <!--transaction destination institution identification code-->
+        <field length="11" type="LLVAR" num="93"></field>
+        
+        <!--transaction originator institution identification code-->
+        <field length="11" type="LLVAR" num="94"></field>
+        
+        <!-- Replacement Amounts -->
+        <field length="999" type="LLLVAR" num="95"></field>
+        
+        <!--amount, net reconciliation-->
+        <field length="16" type="AMOUNT" num="97"></field>
+        
+        <!--payee-->
+        <field length="25" type="ALPHA" num="98"></field>
+
+        <!--settlement institution identification code-->
+        <field length="11" type="LLVAR" num="99"></field>
+        
+        <!-- SVFE Issuer Institution Identifier -->
+        <field length="4" type="ALPHA" num="100"></field>
+        
+        <!--file name-->
+        <field length="17" type="LLVAR" num="101"></field>
+        
+        <!--from account - Account Identification -->
+        <field length="32" type="LLVAR" num="102"></field>
+
+        <!--To account Number - Account Identification – 2  -->
+        <field length="32" type="LLVAR" num="103"></field>
+        
+        <!--transaction description-->
+        <field length="100" type="LLLVAR" num="104"></field>
+        
+        <!--credits, chargeback amount-->
+        <field length="16" type="NUMERIC" num="105"></field>
+        
+        <!--debits, chargeback amount-->
+        <field length="16" type="NUMERIC" num="106"></field>
+        
+        <!--credits, chargeback number-->
+        <field length="10" type="NUMERIC" num="107"></field>
+        
+        <!--debits, chargeback number-->
+        <field length="10" type="NUMERIC" num="108"></field>
+        
+        <!--credits, fee amounts-->
+        <field length="84" type="LLVAR" num="109"></field>
+        
+        <!--debits, fee amounts-->
+        <field length="84" type="LLVAR" num="110"></field>
+        
+        <!--Additional Data-->
+        <field length="84" type="LLLVAR" num="126"></field>
+
+        <!--Secondary MAC Data-->
+        <field length="8" type="BINARY" num="128"></field>
+        
+    </parse>
+    
+    <parse type="1200" extends="1000"></parse>
+    <parse type="1210" extends="1000"></parse>
+    <parse type="1100" extends="1000"></parse>
+    <parse type="1110" extends="1000"></parse>
+    <parse type="1400" extends="1000"></parse>
+    <parse type="1410" extends="1000"></parse>
+    <parse type="1804" extends="1000"></parse>
+    <parse type="1814" extends="1000"></parse>
+    <parse type="1800" extends="1000"></parse>
+    <parse type="1810" extends="1000"></parse>
+    <parse type="1120" extends="1000"></parse>
+    <parse type="1130" extends="1000"></parse>
+    <parse type="1121" extends="1000"></parse>
+    <parse type="1420" extends="1000"></parse>
+    <parse type="1430" extends="1000"></parse>
+    <parse type="1421" extends="1000"></parse>
+    <parse type="1600" extends="1000"></parse>
+    <parse type="1610" extends="1000"></parse>
+    
+    
+</j8583-config>
