@@ -5,14 +5,14 @@ To package and deploy to external tomcat server
 - checkout the repositior from github
 - mvn clean install
 - mvn clean dependency:copy-dependencies package
-- Open http://localhost:3344/
+- Open http://localhost:9000/
 
 
 ## Development server
 - checkout the repositior from github
 - mvn clean install
 - mvn spring-boot:run
-- Open http://localhost:2121/
+- Open http://localhost:9000/
 
 The app will automatically reload if you change any of the source files.
 
@@ -20,7 +20,7 @@ The app will automatically reload if you change any of the source files.
 - checkout the repositior from github
 - mvn clean install
 - mvn spring-boot:run
-- Open http://localhost:2121/
+- Open http://localhost:9000/
 
 ## Prefered Development Envrionment
 - Text Editor: VS Code (v1.34 or later)/ IntelliJ IDEA Community 
