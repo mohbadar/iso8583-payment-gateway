@@ -1,4 +1,4 @@
-# ISO8583 Payment Switch for experimental purposes 
+# Experimental ISO8583 Payment Application
 
 
 To package and deploy to external tomcat server
